@@ -1,0 +1,95 @@
+/* SalesList.css */
+
+.sales-list-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h2 {
+    color: #343a40;
+  }
+  
+  .metrics {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .metric-card {
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  
+  .metric-card .icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  input[type="text"], input[type="date"], select {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  .create-invoice-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .create-invoice-btn:hover {
+    background-color: #218838;
+  }
+  
+  .sales-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .sales-table th, .sales-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .sales-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,79 @@
+.new-purchase-grid {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .full-width {
+    grid-column: span 2;
+  }
+  
+  .submit-btn {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  .message {
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .success {
+    color: green;
+    background-color: #eaffea;
+  }
+  
+  .error {
+    color: red;
+    background-color: #ffeaea;
+  }
+    

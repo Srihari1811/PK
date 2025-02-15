@@ -1,0 +1,137 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const AuthForm = () => {
+  const [isLogin, setIsLogin] = useState(true); // Toggle state
+  const [formData, setFormData] = useState({
+    name: '',
+    username: '',
+    phoneNumber: '',
+    password: ''
+  });
+  const [message, setMessage] = useState(''); // For popup message
+  const [showPopup, setShowPopup] = useState(false); // To control popup visibility
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (isLogin) {
+        // Login request
+        const { data } = await axios.post('http://localhost:5000/login', {
+          username: formData.username,
+          password: formData.password
+        });
+        localStorage.setItem('token', data.token);
+        navigate('/dashboard');
+      } else {
+        // Register request
+        await axios.post('http://localhost:5000/register', formData);
+        // Clear form after successful registration
+        setFormData({
+          name: '',
+          username: '',
+          phoneNumber: '',
+          password: ''
+        });
+        // Show success message in popup
+        setMessage('Registered successfully!');
+        setShowPopup(true);
+      }
+    } catch (error) {
+      setMessage(`Error ${isLogin ? 'logging in' : 'registering user'}`);
+      setShowPopup(true);
+    }
+  };
+
+  return (
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="auth-form p-4 rounded shadow" style={{ width: '400px' }}>
+        <div className="text-center mb-3">
+          <button 
+            className={`btn ${isLogin ? 'btn-primary' : 'btn-outline-primary'} me-2`} 
+            onClick={() => setIsLogin(true)}
+          >
+            Login
+          </button>
+          <button 
+            className={`btn ${!isLogin ? 'btn-primary' : 'btn-outline-primary'}`} 
+            onClick={() => setIsLogin(false)}
+          >
+            Register
+          </button>
+        </div>
+        <h2 className="text-center mb-4">{isLogin ? 'Login' : 'Register'}</h2>
+        <form onSubmit={handleSubmit}>
+          {!isLogin && (
+            <>
+              <div className="form-group mb-3">
+                <label>Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="name"
+                  onChange={handleChange}
+                  value={formData.name}
+                  required
+                />
+              </div>
+              <div className="form-group mb-3">
+                <label>Phone Number</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="phoneNumber"
+                  onChange={handleChange}
+                  value={formData.phoneNumber}
+                  maxLength="10" // Maximum length 10 digits
+                  required
+                />
+              </div>
+            </>
+          )}
+          <div className="form-group mb-3">
+            <label>Username</label>
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              onChange={handleChange}
+              value={formData.username}
+              required
+            />
+          </div>
+          <div className="form-group mb-3">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              onChange={handleChange}
+              value={formData.password}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-success w-100">
+            {isLogin ? 'Login' : 'Register'}
+          </button>
+        </form>
+
+        {/* Popup message */}
+        {showPopup && (
+          <div className="alert alert-success mt-3" role="alert">
+            {message}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default AuthForm;

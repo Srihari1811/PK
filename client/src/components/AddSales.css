@@ -1,0 +1,79 @@
+/* AddSales.css */
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  input[readonly] {
+    background-color: #e9ecef;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .row {
+    margin-bottom: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-6,
+    .col-md-4,
+    .col-md-2 {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  }
+  
