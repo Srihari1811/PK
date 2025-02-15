@@ -155,10 +155,15 @@ const AuthForm = () => {
 
         {/* Popup message */}
         {showPopup && (
-          <div className="alert alert-success mt-3" role="alert" style={{ animation: 'popup 0.5s ease' }}>
-            {message}
-          </div>
-        )}
+  <div 
+    className={`alert ${message.includes('Error') ? 'alert-danger' : 'alert-success'} mt-3`} 
+    role="alert" 
+    style={{ animation: 'popup 0.5s ease' }}
+  >
+    {message}
+  </div>
+)}
+
       </div>
     </div>
   );
