@@ -9,7 +9,7 @@ const PurchaseList = () => {
     // Fetch purchases from the API
     const fetchPurchases = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/purchases'); // Make sure the endpoint matches your backend
+        const response = await axios.get('https://pk-api-psi.vercel.app/purchases'); // Make sure the endpoint matches your backend
         setPurchases(response.data);
       } catch (error) {
         console.error('Error fetching purchase data:', error);
