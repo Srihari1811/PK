@@ -29,7 +29,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (selectedView === 'users') {
       setLoading(true);
-      fetch('http://localhost:5000/users') // Make sure this matches your backend route
+      fetch('https://pk-api-psi.vercel.app/users') // Make sure this matches your backend route
         .then((response) => response.json())
         .then((data) => {
           setUsers(data); // Set fetched users to state
