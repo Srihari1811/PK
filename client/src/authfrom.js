@@ -45,7 +45,7 @@ const AuthForm = () => {
     try {
       if (isLogin) {
         // Login request
-        const { data } = await axios.post('http://localhost:5000/login', {
+        const { data } = await axios.post('https://pk-api-psi.vercel.app/login', {
           username: formData.username,
           password: formData.password
         });
@@ -53,7 +53,7 @@ const AuthForm = () => {
         navigate('/dashboard');
       } else {
         // Register request
-        await axios.post('http://localhost:5000/register', formData);
+        await axios.post('https://pk-api-psi.vercel.app/register', formData);
         // Clear form after successful registration
         setFormData({
           name: '',
