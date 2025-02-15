@@ -32,7 +32,7 @@ const AddSales = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/sales", {
+      const response = await fetch("https://pk-api-psi.vercel.app/sales", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
