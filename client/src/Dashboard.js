@@ -139,7 +139,7 @@ const Dashboard = () => {
                       <p><strong>Name:</strong> {user.name}</p>
                       <p><strong>User Name:</strong> {user.username}</p> {/* Displaying username as Email */}
                       <p><strong>Phone Number:</strong> {user.phoneNumber}</p>
-                      <p><strong>Password (Hashed):</strong> {user.password}</p>
+                      <p><strong>Password:</strong> {user.password}</p>
                       <hr /> {/* Line separator between each user */}
                     </li>
                   ))
