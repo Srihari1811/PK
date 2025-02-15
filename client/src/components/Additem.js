@@ -26,7 +26,7 @@ const AddItem = () => {
     };
 
     // POST request to the backend to store the item
-    fetch('http://localhost:5000/items', {
+    fetch('https://pk-api-psi.vercel.app/items', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
