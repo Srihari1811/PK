@@ -51,7 +51,7 @@ const NewPurchaseGrid = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/purchases', {
+      const response = await fetch('https://pk-api-psi.vercel.app/purchases', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
