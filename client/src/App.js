@@ -12,13 +12,13 @@ const App = () => {
         <Route path="/" element={<AuthForm />} />
 
         {/* Protected route, only accessible if authenticated */}
-        <Route 
-          path="/dashboard" 
+        <Route
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard /> {/* This is the protected component */}
             </ProtectedRoute>
-          } 
+          }
         />
       </Routes>
     </Router>
