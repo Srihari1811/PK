@@ -57,6 +57,8 @@ const itemSchema = new mongoose.Schema({
     name: { type: String, required: true },
     price: { type: Number, required: true },
     gst: { type: Number, required: true },
+    description: String,
+    quantityAvailable: Number,
   });
   
   // Item model
@@ -84,7 +86,8 @@ const itemSchema = new mongoose.Schema({
   });
 
   // GET request to fetch all items
-app.get('/items', (req, res) => {
+  // GET request to fetch all items
+  app.get('/items', (req, res) => {
     Item.find()
       .then(items => res.json(items))
       .catch(err => res.status(500).json({ message: 'Failed to fetch items' }));
@@ -107,6 +110,7 @@ const purchaseSchema = new mongoose.Schema({
   discountOnAll: { type: Number },
   note: { type: String },
   roundOff: { type: Number },
+  
 });
 
 // Purchase Model
@@ -133,7 +137,7 @@ app.get('/purchases', async (req, res) => {
 });
 
 
-// Sales Schema and Model
+// Define the Sales Schema
 const salesSchema = new mongoose.Schema({
   warehouse: String,
   customerName: String,
@@ -141,29 +145,75 @@ const salesSchema = new mongoose.Schema({
   salesNumber: Number,
   salesDate: Date,
   referenceNo: String,
-  itemDetails: Array,
+  productName: String,
+  productQuantity: Number,
+  productPrice: Number,
+  total: Number,
   otherCharges: Number,
   discountCouponCode: String,
   couponType: String,
   couponValue: Number,
   discountOnAll: Number,
-  total: Number,
   paymentPaid: Number,
   paymentStatus: String,
   dueDate: Date,
   note: String,
 });
 
+// Create Models
 const Sales = mongoose.model('Sales', salesSchema);
 
-// POST route to add sales data
+// Submit sales data
 app.post('/sales', async (req, res) => {
+  const {
+    warehouse,
+    customerName,
+    salesCode,
+    salesNumber,
+    salesDate,
+    referenceNo,
+    productName,
+    productQuantity,
+    productPrice,
+    total,
+    otherCharges,
+    discountCouponCode,
+    couponType,
+    couponValue,
+    discountOnAll,
+    paymentPaid,
+    paymentStatus,
+    dueDate,
+    note,
+  } = req.body;
+
+  const newSales = new Sales({
+    warehouse,
+    customerName,
+    salesCode,
+    salesNumber,
+    salesDate,
+    referenceNo,
+    productName,
+    productQuantity,
+    productPrice,
+    total,
+    otherCharges,
+    discountCouponCode,
+    couponType,
+    couponValue,
+    discountOnAll,
+    paymentPaid,
+    paymentStatus,
+    dueDate,
+    note,
+  });
+
   try {
-    const newSale = new Sales(req.body);
-    await newSale.save();
-    res.status(200).json({ message: 'Sales data submitted successfully' });
+    await newSales.save();
+    res.status(201).json({ message: 'Sales data submitted successfully' });
   } catch (error) {
-    console.error('Error saving sales data:', error);
+    console.error('Error submitting sales data:', error);
     res.status(500).json({ message: 'Failed to submit sales data' });
   }
 });
@@ -178,8 +228,6 @@ app.get('/sales', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch sales data' });
   }
 });
-
-
 
 // Start server
 app.listen(5000, () => {
