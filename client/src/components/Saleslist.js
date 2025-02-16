@@ -15,7 +15,7 @@ const SalesList = () => {
 
   const fetchSalesData = async () => {
     try {
-      const response = await axios.get("https://pk-api-psi.vercel.app/sales");
+      const response = await axios.get("http://localhost:5000/sales");
       const sales = response.data;
 
       console.log("Sales Data:", sales); // Add this log to see the actual data coming from the backend
@@ -90,6 +90,9 @@ const SalesList = () => {
               <th>Sales Code</th>
               <th>Reference No.</th>
               <th>Customer Name</th>
+              <th>product Name</th>
+              <th>product Price</th>
+              <th>product Quantity</th>
               <th>Total</th>
               <th>Paid Payment</th>
               <th>Payment Status</th>
@@ -103,6 +106,9 @@ const SalesList = () => {
                 <td>{sale.salesCode}</td>
                 <td>{sale.referenceNo}</td>
                 <td>{sale.customerName}</td>
+                <td>{sale.productName}</td> {/* Fix: Display Product Name */}
+                <td>₹ {sale.productPrice}</td> {/* Fix: Display Product Price */}
+                <td>{sale.productQuantity}</td>
                 <td>₹ {sale.total}</td>
                 <td>₹ {sale.paymentPaid}</td>
                 <td>{sale.paymentStatus}</td>
